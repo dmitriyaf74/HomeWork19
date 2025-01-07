@@ -4,7 +4,9 @@
     {
         static void Main(string[] args)
         {
-            Console.WriteLine("Hello, World!");
+            //Program1.Execute();
+            //Program2.Execute();
+            Program3.Execute();
         }
     }
 }
