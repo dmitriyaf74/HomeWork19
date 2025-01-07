@@ -95,17 +95,29 @@ namespace HomeWork19
                 catalogOfPlanet2[i + 1].Prior = catalogOfPlanet2[i];
             }
 
-            Console.WriteLine("С делегатом");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("С делегатом");
+            Console.ResetColor();
+            Console.WriteLine("");
             ShowPlanetInfo(catalogOfPlanet2, "Земля");
             ShowPlanetInfo(catalogOfPlanet2, "Лимония");
             ShowPlanetInfo(catalogOfPlanet2, "Марс");
 
-            Console.WriteLine("С лямбдой");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("С лямбдой");
+            Console.ResetColor();
+            Console.WriteLine("");
             ShowPlanetInfoLambda(catalogOfPlanet2, "Земля");
             ShowPlanetInfoLambda(catalogOfPlanet2, "Лимония");
             ShowPlanetInfoLambda(catalogOfPlanet2, "Марс");
 
-            Console.WriteLine("С лямбдой Лимония");
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write("С лямбдой Лимония");
+            Console.ResetColor();
+            Console.WriteLine("");
             ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Земля");
             ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Лимония");
             ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Марс");

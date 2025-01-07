@@ -9,7 +9,7 @@ namespace HomeWork19.Classes
     internal class CatalogOfPlanet : List<Planeta>
     {
         int queryCounter = 0;
-        public (int numerus, int aequator, string errstr) GetPlanet(string planetname) //Tuple<string, int, string>
+        public (int numerus, int aequator, string errstr) GetPlanet(string planetname) 
         {
             queryCounter++;
             if (queryCounter % 3 == 0)
