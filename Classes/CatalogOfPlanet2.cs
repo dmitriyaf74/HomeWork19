@@ -11,7 +11,7 @@ namespace HomeWork19.Classes
         public delegate string DPlanetValidator(string planetname);
 
         int QueryCounter = 0;
-        private List<Planeta> PlanetList;
+        private readonly List<Planeta> PlanetList;
 
         public CatalogOfPlanet2()
         {

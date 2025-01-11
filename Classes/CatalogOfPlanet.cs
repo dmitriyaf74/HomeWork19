@@ -11,7 +11,7 @@ namespace HomeWork19.Classes
     internal class CatalogOfPlanet
     {
         int queryCounter = 0;
-        private List<Planeta> PlanetList;
+        private readonly List<Planeta> PlanetList;
 
         public CatalogOfPlanet() 
         {

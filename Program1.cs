@@ -14,7 +14,7 @@ namespace HomeWork19
     {
         enum EqualType { NotEquals, Equals, Thesame }
 
-        private static List<string> EqualTypeStr = ["Не совпадает","Совпадает","Одно и то же"];
+        private static readonly List<string> EqualTypeStr = ["Не совпадает","Совпадает","Одно и то же"];
 
         private static void ShowPlanet(string planetname, int planetnum, int aequator, EqualType venusEqv)
         {
