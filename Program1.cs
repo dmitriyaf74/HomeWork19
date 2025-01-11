@@ -12,13 +12,24 @@ namespace HomeWork19
 {
     static class Program1
     {
-        private static void ShowPlanet(string planetname, int planetnum, int aequator, bool venusEqv)
+        enum EqualType { NotEquals, Equals, Thesame }
+
+        private static List<string> EqualTypeStr = ["Не совпадает","Совпадает","Одно и то же"];
+
+        private static void ShowPlanet(string planetname, int planetnum, int aequator, EqualType venusEqv)
         {
             Console.WriteLine(planetname);
             Console.WriteLine($"Порядковый номер от солнца: {planetnum}");
             Console.WriteLine($"Длина экватора: {aequator} км");
-            Console.WriteLine($"Эквивалент Венеры: {venusEqv}");
+            Console.WriteLine($"Эквивалент Венеры: {EqualTypeStr[(int)venusEqv]}");
             Console.WriteLine("");
+        }
+
+        private static EqualType GetEqualType(object obj1, object obj2)
+        {
+            if (obj1 == obj2) return EqualType.Thesame;
+            if (obj1.Equals(obj2)) return EqualType.Equals;
+            return EqualType.NotEquals;
         }
 
         public static void Execute()
@@ -48,13 +59,13 @@ namespace HomeWork19
             var Venus2 = Venus with {};
 
             dynamic planeta = Venus;
-            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, planeta.Equals(Venus));
+            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, GetEqualType(planeta, Venus));
             planeta = Terra;
-            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, planeta.Equals(Venus));
+            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, GetEqualType(planeta, Venus));
             planeta = Mars;
-            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, planeta.Equals(Venus));
+            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, GetEqualType(planeta, Venus));
             planeta = Venus2;
-            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, planeta.Equals(Venus));
+            ShowPlanet(planeta.Name, planeta.Numerus, planeta.Aequator, GetEqualType(planeta, Venus));
         }
     }
 }
