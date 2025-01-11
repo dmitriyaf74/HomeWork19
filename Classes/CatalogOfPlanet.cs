@@ -10,7 +10,7 @@ namespace HomeWork19.Classes
 {
     internal class CatalogOfPlanet
     {
-        int queryCounter = 0;
+        private int QueryCounter = 0;
         private readonly List<Planeta> PlanetList;
 
         public CatalogOfPlanet() 
@@ -26,8 +26,8 @@ namespace HomeWork19.Classes
 
         public (int numerus, int aequator, string errstr) GetPlanet(string planetname) 
         {
-            queryCounter++;
-            if (queryCounter % 3 == 0)
+            QueryCounter++;
+            if (QueryCounter % 3 == 0)
             {
                 return (0, 0, "Вы спрашиваете слишком часто");
             }

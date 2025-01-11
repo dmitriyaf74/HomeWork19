@@ -8,9 +8,9 @@ namespace HomeWork19.Classes
 {
     internal class Planeta
     {
-        public string Name;
+        public string? Name;
         public int Numerus;
         public int Aequator;
-        public Planeta Prior;
+        public Planeta? Prior;
     }
 }
