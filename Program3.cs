@@ -4,6 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 using HomeWork19.Classes;
+using static HomeWork19.Classes.CatalogOfPlanet2;
 
 namespace HomeWork19
 {
@@ -28,7 +29,7 @@ namespace HomeWork19
             string errstr;
             (numerus, aequator, errstr) = catalogOfPlanet2.GetPlanet(planetName, DPlanetValidator);
             Console.WriteLine(planetName);
-            if (aequator == 0)
+            if (!string.IsNullOrEmpty(errstr))
             {
                 Console.WriteLine(errstr);
             }
@@ -49,7 +50,7 @@ namespace HomeWork19
                 planetName => { queryCounter++; if (queryCounter % 3 == 0) return "Вы спрашиваете слишком часто!"; return null; }
                 );
             Console.WriteLine(planetName);
-            if (aequator == 0)
+            if (!string.IsNullOrEmpty(errstr))
             {
                 Console.WriteLine(errstr);
             }
@@ -70,7 +71,7 @@ namespace HomeWork19
                 planetName => { if (planetName == "Лимония") return "Это запретная планета"; return null; }
                 );
             Console.WriteLine(planetName);
-            if (aequator == 0)
+            if (!string.IsNullOrEmpty(errstr))
             {
                 Console.WriteLine(errstr);
             }
@@ -82,46 +83,33 @@ namespace HomeWork19
             Console.WriteLine("");
         }
 
+        private static void WriteSectorTitle(string title)
+        {
+            Console.BackgroundColor = ConsoleColor.Red;
+            Console.ForegroundColor = ConsoleColor.Black;
+            Console.Write(title);
+            Console.ResetColor();
+            Console.WriteLine("");
+        }
+
+        public delegate void DShowPlanetInfo(CatalogOfPlanet2 catalogOfPlanet2, string planetname);
+        private static void ShowPlanetInfoCustom(CatalogOfPlanet2 catalogOfPlanet2, DShowPlanetInfo showPlanetInfo)
+        {
+            showPlanetInfo(catalogOfPlanet2, "Земля");
+            showPlanetInfo(catalogOfPlanet2, "Лимония");
+            showPlanetInfo(catalogOfPlanet2, "Марс");
+        }
+
         public static void Execute()
         {
-            var catalogOfPlanet2 = new CatalogOfPlanet2()
-            {
-                new Planeta(){ Name = "Венера", Numerus = 2, Aequator = 38025, Prior = null },
-                new Planeta(){ Name = "Земля" , Numerus = 3, Aequator = 40075, Prior = null },
-                new Planeta(){ Name = "Марс"  , Numerus = 4, Aequator = 21344, Prior = null },
-            };
-            for (int i = 0; i < catalogOfPlanet2.Count - 1; i++)
-            {
-                catalogOfPlanet2[i + 1].Prior = catalogOfPlanet2[i];
-            }
+            var catalogOfPlanet2 = new CatalogOfPlanet2();
 
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("С делегатом");
-            Console.ResetColor();
-            Console.WriteLine("");
-            ShowPlanetInfo(catalogOfPlanet2, "Земля");
-            ShowPlanetInfo(catalogOfPlanet2, "Лимония");
-            ShowPlanetInfo(catalogOfPlanet2, "Марс");
-
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("С лямбдой");
-            Console.ResetColor();
-            Console.WriteLine("");
-            ShowPlanetInfoLambda(catalogOfPlanet2, "Земля");
-            ShowPlanetInfoLambda(catalogOfPlanet2, "Лимония");
-            ShowPlanetInfoLambda(catalogOfPlanet2, "Марс");
-
-            Console.BackgroundColor = ConsoleColor.Red;
-            Console.ForegroundColor = ConsoleColor.Black;
-            Console.Write("С лямбдой Лимония");
-            Console.ResetColor();
-            Console.WriteLine("");
-            ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Земля");
-            ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Лимония");
-            ShowPlanetInfoLambdaLemon(catalogOfPlanet2, "Марс");
-
+            WriteSectorTitle("С делегатом");
+            ShowPlanetInfoCustom(catalogOfPlanet2, ShowPlanetInfo);
+            WriteSectorTitle("С лямбдой");
+            ShowPlanetInfoCustom(catalogOfPlanet2, ShowPlanetInfoLambda);
+            WriteSectorTitle("С лямбдой Лимония");
+            ShowPlanetInfoCustom(catalogOfPlanet2, ShowPlanetInfoLambdaLemon);
         }
 
     }
