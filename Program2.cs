@@ -18,7 +18,7 @@ namespace HomeWork19
             string errstr;
             (numerus, aequator, errstr) = catalogOfPlanet.GetPlanet(planetName);
             Console.WriteLine(planetName);
-            if (aequator == 0)
+            if (!string.IsNullOrEmpty(errstr))
             {
                 Console.WriteLine(errstr);
             }
@@ -32,20 +32,11 @@ namespace HomeWork19
 
         public static void Execute()
         {
-            var catalogOfPlanet = new CatalogOfPlanet()
-            {
-                new Planeta(){ Name = "Венера", Numerus = 2, Aequator = 38025, Prior = null },
-                new Planeta(){ Name = "Земля" , Numerus = 3, Aequator = 40075, Prior = null },
-                new Planeta(){ Name = "Марс"  , Numerus = 4, Aequator = 21344, Prior = null },
-            };
-            for (int i = 0; i < catalogOfPlanet.Count - 1; i++)
-            {
-                catalogOfPlanet[i + 1].Prior = catalogOfPlanet[i];
-            }
+            var catalogOfPlanet = new CatalogOfPlanet();
 
-            ShowPlanetInfo(catalogOfPlanet, "Земля");
+            ShowPlanetInfo(catalogOfPlanet, "Земля"  );
             ShowPlanetInfo(catalogOfPlanet, "Лимония");
-            ShowPlanetInfo(catalogOfPlanet, "Марс");
+            ShowPlanetInfo(catalogOfPlanet, "Марс"   );
 
         }
 
